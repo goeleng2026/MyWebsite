@@ -435,7 +435,7 @@ html[data-theme="light"] .site-footer {
   min-width:0;
 }
 
-/* ── STAT CHIP ��─ */
+/* ── STAT CHIP ─── */
 .stat-chip {
   display:flex; flex-direction:column;
   border:1px solid var(--border);
@@ -511,6 +511,7 @@ html[data-theme="light"] .site-footer {
   border-radius:2px;
   outline:none;
   transition:border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
 }
 html[data-theme="light"] .form-input,
 html[data-theme="light"] .form-select,
@@ -533,6 +534,7 @@ html[data-theme="light"] .form-textarea {
 
 /* ── RESPONSIVE ── */
 @media (max-width:900px) {
+  html { font-size:15px; }
   .site-nav { width:calc(100% - 24px); }
   .nav-bar { padding:0 16px; }
   .container { padding:0 24px; }
@@ -544,16 +546,49 @@ html[data-theme="light"] .form-textarea {
   .approach-banner > div:first-child h3 { font-size:18px; }
   .approach-banner > div:first-child p { font-size:14px; }
   .stat-chip .num { font-size:28px; }
+  .beam { width:50vw; }
 }
 @media (max-width:600px) {
+  html { font-size:14px; }
+  body { padding-top:20px; }
+  .site-nav { top:8px; width:calc(100% - 16px); }
+  .nav-bar { padding:0 12px; height:56px; }
+  .nav-logo { height:40px; }
   .footer-grid { grid-template-columns:1fr; }
   .section { padding:64px 0; }
+  .section--tight { padding:40px 0; }
+  .container { padding:0 16px; }
+  .page-hero { padding:80px 0 60px; }
+  .page-hero h1 { font-size:clamp(28px,5vw,48px); margin-bottom:16px; }
+  .page-hero p { font-size:14px; }
+  h1 { font-size:clamp(32px,7vw,56px); }
+  h2 { font-size:clamp(20px,3vw,32px); }
+  h3 { font-size:18px; }
   .approach-banner { padding:20px; gap:24px; }
   .approach-banner > div:first-child h3 { font-size:16px; }
   .approach-banner > div:first-child p { font-size:13px; }
-  .approach-banner .btn { font-size:12px; padding:11px 18px; }
+  .approach-banner .btn { font-size:10px; padding:10px 16px; }
   .approach-stats { gap:10px; }
   .stat-chip { padding:14px 16px; }
   .stat-chip .num { font-size:22px; letter-spacing:-0.01em; }
   .stat-chip .lbl { letter-spacing:0.12em; font-size:10px; }
+  .form-input, .form-select, .form-textarea { font-size:16px; padding:12px 14px; }
+  .btn { padding:12px 20px; }
+  .beam { display:none; }
+  .section-head { margin:0 auto 40px; }
+  .eyebrow { font-size:9px; margin-bottom:12px; }
+}
+
+/* ── ULTRA MOBILE (under 380px) ── */
+@media (max-width:380px) {
+  html { font-size:13px; }
+  .container { padding:0 12px; }
+  .nav-bar { height:50px; }
+  .nav-logo { height:36px; }
+  .page-hero { padding:64px 0 48px; }
+  .section { padding:48px 0; }
+  .approach-banner { padding:16px; }
+  .stat-chip { padding:12px 14px; }
+  .stat-chip .num { font-size:18px; }
+  .btn { padding:10px 16px; font-size:9px; }
 }
