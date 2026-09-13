@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Services — GoEdgeless Engineering</title>
+  <meta name="description" content="Process Design, Process Drafting, and Process Solutions. Full lifecycle engineering for Oil & Gas, Mining, Chemical and Infrastructure across Australia."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── SERVICES-SPECIFIC ── */
+
+    .services-hero-bg {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(70% 50% at 20% 60%, rgba(79,170,255,0.1), transparent 55%),
+        linear-gradient(160deg, #0a2348 0%, #04132b 100%);
+    }
+
+    /* SERVICE BLOCKS */
+    .service-block {
+      padding:80px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .service-block:last-of-type { border-bottom:none; }
+
+    .service-block-header {
+      display:flex; align-items:flex-start;
+      justify-content:space-between;
+      gap:48px; margin-bottom:56px;
+    }
+    .service-block-number {
+      font-size:9px; font-weight:800; letter-spacing:0.3em;
+      color:var(--signal); text-transform:uppercase;
+      margin-bottom:16px; display:block;
+    }
+    .service-block h2 {
+      font-size:clamp(28px,4vw,52px);
+      text-transform:uppercase; letter-spacing:0.02em;
+    }
+    .service-block h2 em { color:var(--signal); font-style:normal; }
+    .service-block-intro {
+      font-size:15px; color:var(--muted); line-height:1.75;
+      max-width:520px; flex-shrink:0; flex:1;
+      padding-top:8px;
+    }
+
+    .service-block-body {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:1px; background:var(--border);
+      border:1px solid var(--border);
+    }
+    .service-item {
+      background:var(--navy-dark);
+      padding:28px 28px;
+      display:flex; align-items:flex-start; gap:16px;
+      transition:background 0.25s;
+    }
+    .service-item:hover { background:rgba(79,170,255,0.04); }
+    .service-item-dot {
+      width:6px; height:6px; border-radius:50%;
+      background:var(--signal); margin-top:6px; flex-shrink:0;
+      box-shadow:0 0 6px rgba(79,170,255,0.5);
+    }
+    .service-item p { font-size:13px; color:var(--muted); line-height:1.65; }
+    .service-item strong { color:var(--white); font-weight:700; display:block; margin-bottom:4px; font-size:13px; }
+
+    /* PROCESS WORKFLOW */
+    .workflow-section {
+      background:linear-gradient(160deg, #071d3d 0%, #04132b 100%);
+      border:1px solid var(--border);
+      padding:64px;
+      margin:80px 0;
+      position:relative; overflow:hidden;
+    }
+    .workflow-section::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(50% 60% at 80% 30%, rgba(79,170,255,0.08), transparent);
+    }
+    .workflow-section h2 {
+      text-align:center; font-size:clamp(22px,3vw,38px);
+      margin-bottom:8px;
+    }
+    .workflow-section .sub {
+      text-align:center; font-size:14px; color:var(--muted);
+      margin-bottom:56px;
+    }
+    .workflow-steps {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:1px; background:var(--border);
+      border:1px solid var(--border);
+      position:relative; z-index:1;
+    }
+    .w-step {
+      background:var(--navy-dark);
+      padding:32px 24px;
+      position:relative; overflow:hidden;
+      transition:background 0.3s;
+    }
+    .w-step::before {
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:2px; background:var(--signal);
+      transform:scaleX(0); transition:transform 0.3s;
+      transform-origin:left;
+    }
+    .w-step:hover { background:rgba(79,170,255,0.04); }
+    .w-step:hover::before { transform:scaleX(1); }
+    .w-step-num {
+      font-size:10px; font-weight:800; letter-spacing:0.26em;
+      color:var(--signal); margin-bottom:16px; display:block;
+    }
+    .w-step h4 { font-size:13px; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.08em; }
+    .w-step p { font-size:12px; color:var(--muted); line-height:1.65; }
+
+    /* APPROACH BANNER */
+    .approach-banner {
+      background:rgba(79,170,255,0.06);
+      border:1px solid var(--border);
+      border-radius:2px;
+      padding:48px;
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:48px; align-items:center;
+      margin-bottom:80px;
+    }
+    .approach-banner h3 { font-size:clamp(20px,2.5vw,32px); margin-bottom:14px; }
+    .approach-banner p { font-size:14px; color:var(--muted); line-height:1.75; }
+    .approach-stats {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    @media (max-width:900px) {
+      .service-block-header { flex-direction:column; gap:24px; }
+      .service-block-body { grid-template-columns:1fr; }
+      .workflow-steps { grid-template-columns:1fr 1fr; }
+      .approach-banner { grid-template-columns:1fr; }
+    }
+    @media (max-width:600px) {
+      .workflow-steps { grid-template-columns:1fr; }
+      .workflow-section { padding:40px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a class="nav-brand" href="index.html">
+      <img src="Material/Logo_White_tran.svg" alt="GoEdgeless Engineering" class="nav-logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Send Enquiry</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-header">
+      <a class="nav-brand" href="index.html">
+        <img src="Material/Logo_White_tran.svg" alt="GoEdgeless Engineering" class="nav-logo">
+      </a>
+      <button class="nav-drawer-close" id="navClose" aria-label="Close menu">✕</button>
+    </div>
+    <ul class="nav-drawer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-drawer-cta">Send Enquiry →</a>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="services-hero-bg"></div>
+      <div class="grid-overlay"></div>
+      <div class="container page-hero-inner">
+        <div class="breadcrumb"><a href="index.html">Home</a> / Services</div>
+        <h1>Process engineering services<br>for projects that have to<br><em>be right the first time.</em></h1>
+        <p>Three disciplines, scoped cleanly and delivered to client and industry standards. Engagements range from short scoping studies through full FEED packages and site-based design support.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- SERVICE 01 -->
+        <div class="service-block" id="process-design">
+          <div class="service-block-header reveal">
+            <div>
+              <span class="service-block-number">01 / Service</span>
+              <h2>Process <em>Design</em></h2>
+            </div>
+            <p class="service-block-intro">From conceptual studies through Front-End Engineering (FEED) and into detailed design — the engineering work that defines how a process plant operates, what equipment it needs, and how it stays safe. Suitable for greenfield, brownfield and owner-engineer engagements needing additional process capacity.</p>
+          </div>
+
+          <div class="service-block-body reveal">
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Conceptual studies &amp; options analysis</strong>Technology selection and preliminary feasibility reviews.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Heat &amp; material balances, simulation support</strong>Mass and energy balances anchoring the design basis.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Equipment sizing, datasheets, line sizing</strong>From pumps and vessels through to hydraulic calculations.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>FEED packages: SFDs, PFDs, P&amp;IDs, instrument lists, line lists</strong>Full FEED deliverable set to support sanction and procurement.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Detailed design support through construction &amp; commissioning</strong>Ongoing engineering support as the plant is built.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>HAZOP / HAZID participation and close-out tracking</strong>Support through safety review cycles with action close-out.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SERVICE 02 -->
+        <div class="service-block" id="process-drafting">
+          <div class="service-block-header reveal">
+            <div>
+              <span class="service-block-number">02 / Service</span>
+              <h2>Process <em>Drafting</em></h2>
+            </div>
+            <p class="service-block-intro">The drawings that hold the project together. Produced to client title blocks, ISA conventions and project drafting manuals — with revision discipline that fits the document control system on a big EPC project. Drafting work is available as a standalone service or bundled into a process design engagement.</p>
+          </div>
+
+          <div class="service-block-body reveal">
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Process Flow Diagrams (PFDs)</strong>Mass and energy basis captured in clean, reviewable format.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Piping &amp; Instrumentation Diagrams (P&amp;IDs)</strong>To ISA 5.1 or client-specific standards with full instrument tagging.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>General Arrangement (GA) drawings</strong>Plot plan and equipment arrangement, coordinated with other disciplines.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Loop diagrams &amp; instrument hook-up details</strong>Instrument-level documentation for construction and commissioning.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Equipment lists, line lists, instrument lists, valve lists</strong>Register-format deliverables integrated with the drawing set.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Revision management and IFR / IFA / IFC issue cycles</strong>Controlled issue cycles with comment registers and close-out.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SERVICE 03 -->
+        <div class="service-block" id="process-solutions">
+          <div class="service-block-header reveal">
+            <div>
+              <span class="service-block-number">03 / Service</span>
+              <h2>Process <em>Solutions</em></h2>
+            </div>
+            <p class="service-block-intro">Engineering interventions on existing assets. Where Process Design defines a new plant, Process Solutions improves one you already have — safely, with operations in the room, and with constructability accounted for. Often the right starting point when a site is hitting capacity, has had an incident, or has accumulated informal changes that the P&amp;IDs no longer reflect.</p>
+          </div>
+
+          <div class="service-block-body reveal">
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Plant debottlenecking &amp; capacity uplift studies</strong>Identify and resolve throughput constraints using operating data.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Site redesign following incidents or safety findings</strong>Redesign work with safety outcomes as the primary driver.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>P&amp;ID redlining, as-built reconciliation &amp; document refresh</strong>Bring documentation back in line with what's actually installed.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Process optimisation — yield, energy, throughput</strong>Systematic review to extract performance from existing equipment.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Modification packages for safe execution during shutdowns</strong>Engineered change packages with isolation, sequence and commissioning plans.</p>
+            </div>
+            <div class="service-item">
+              <div class="service-item-dot"></div>
+              <p><strong>Engineering support to operations &amp; reliability teams</strong>Embedded or retainer support for ongoing operational challenges.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- WORKFLOW -->
+        <div class="workflow-section reveal">
+          <span class="eyebrow" style="display:block;text-align:center;margin-bottom:16px;">Our Approach</span>
+          <h2>A predictable engineering process, on every job.</h2>
+          <p class="sub">No surprises. The same four-step rhythm, scaled to the size of the package.</p>
+
+          <div class="workflow-steps">
+            <div class="w-step">
+              <span class="w-step-num">01</span>
+              <h4>Scope</h4>
+              <p>Call to confirm deliverables, schedule, standards and interfaces. Fixed-scope estimate issued within one business day.</p>
+            </div>
+            <div class="w-step">
+              <span class="w-step-num">02</span>
+              <h4>Design</h4>
+              <p>Engineering executed against agreed standards. Calculations, models and drafts produced in your format, with clean revision control.</p>
+            </div>
+            <div class="w-step">
+              <span class="w-step-num">03</span>
+              <h4>Review</h4>
+              <p>Internal review before issue. Participation in client design reviews, HAZOP / HAZID workshops and IDC comment cycles.</p>
+            </div>
+            <div class="w-step">
+              <span class="w-step-num">04</span>
+              <h4>Issue</h4>
+              <p>Deliverables against agreed milestones — IFR, IFA, IFC — with full revision comment register and a clean hand-back.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPROACH -->
+        <div class="approach-banner reveal">
+          <div>
+            <h3>Have a process package that needs scoped?</h3>
+            <p>Share the brief. You'll get a clear engineering approach and an honest indicative effort within one business day. NDAs available on request.</p>
+            <div class="btn-row">
+              <a href="contact.html" class="btn btn-primary">Send Enquiry →</a>
+              <a href="contact.html" class="btn btn-ghost">Get in Touch</a>
+            </div>
+          </div>
+          <div class="approach-stats">
+            <div class="stat-chip">
+              <span class="num">10+</span>
+              <span class="lbl">Years experience</span>
+            </div>
+            <div class="stat-chip">
+              <span class="num">1,000+</span>
+              <span class="lbl">Documents delivered</span>
+            </div>
+            <div class="stat-chip">
+              <span class="num">4</span>
+              <span class="lbl">Industries served</span>
+            </div>
+            <div class="stat-chip">
+              <span class="num">1 day</span>
+              <span class="lbl">Response time</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-brand" href="index.html" style="text-decoration:none;">
+            <img src="Material/Logo_White_tran.svg" alt="GoEdgeless Engineering" class="nav-logo">
+          </a>
+          <p>Chemical &amp; process engineering consultancy. Based in Australia, delivering process design, drafting and optimisation to firms across heavy industry.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Site</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#process-design">Process Design</a></li>
+            <li><a href="services.html#process-drafting">Process Drafting</a></li>
+            <li><a href="services.html#process-solutions">Process Solutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@goedgeless.com.au">hello@goedgeless.com.au</a></li>
+            <li><a href="tel:+61421555010">+61 421 555 010</a></li>
+            <li>Australia — Nationwide</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span class="yr">2026</span> GoEdgeless Engineering. All rights reserved.</span>
+        <span>ABN Registered · Insured · Confidentiality on request</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

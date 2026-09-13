@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light');}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Go Edgeless Engineering | Process · Design · Consultancy</title>
+  <meta name="description" content="AI-powered process engineering consultancy. Concept through detailed design, commissioning and optimisation — for coal, chemical, waste-to-energy, thermal and wastewater industries."/>
+  <link rel="canonical" href="https://goedgeless.mohammedalsewari06.workers.dev/home"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Go Edgeless Engineering"/>
+  <meta property="og:title" content="Go Edgeless Engineering | Process · Design · Consultancy"/>
+  <meta property="og:description" content="AI-powered process engineering consultancy. Concept through detailed design, commissioning and optimisation — for coal, chemical, waste-to-energy, thermal and wastewater industries."/>
+  <meta property="og:url" content="https://goedgeless.mohammedalsewari06.workers.dev/home"/>
+  <meta property="og:image" content="https://goedgeless.mohammedalsewari06.workers.dev/Material/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Go Edgeless Engineering | Process · Design · Consultancy"/>
+  <meta name="twitter:description" content="AI-powered process engineering consultancy. Concept through detailed design, commissioning and optimisation — for coal, chemical, waste-to-energy, thermal and wastewater industries."/>
+  <meta name="twitter:image" content="https://goedgeless.mohammedalsewari06.workers.dev/Material/og-image.png"/>
+  <link rel="icon" type="image/png" href="Material/favicon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── INDEX-SPECIFIC ── */
+
+    /* HERO */
+    .hero {
+      position:relative; min-height:100vh;
+      display:flex; align-items:center;
+      overflow:hidden; isolation:isolate;
+      padding:0 0 80px;
+    }
+    .hero::before {
+      content:''; position:absolute; inset:-12%; z-index:-3;
+      background:
+        radial-gradient(140% 100% at 20% 90%, #0d2e5c 0%, transparent 55%),
+        radial-gradient(80% 60% at 78% 12%, #123a73 0%, transparent 50%),
+        linear-gradient(160deg, #0a2348 0%, #04132b 70%);
+      animation:kenburns 28s ease-in-out infinite alternate;
+    }
+    @keyframes kenburns {
+      from { transform:scale(1) translate(0,0); }
+      to   { transform:scale(1.1) translate(-2%,2%); }
+    }
+    .hero::after {
+      content:''; position:absolute; inset:0; z-index:-2;
+      background:
+        radial-gradient(60% 50% at 80% 30%, rgba(79,170,255,0.18), transparent 70%),
+        radial-gradient(40% 35% at 10% 20%, rgba(79,170,255,0.08), transparent 70%);
+      mix-blend-mode:screen;
+      animation:breathe 9s ease-in-out infinite;
+    }
+    @keyframes breathe { 0%,100%{opacity:.8;} 50%{opacity:1;} }
+
+    .hero-content {
+      position:relative; z-index:1;
+      width:100%; margin:0;
+      padding:160px 4rem 0;
+      display:flex; flex-direction:row;
+      align-items:center; justify-content:space-between;
+      gap:48px;
+    }
+    .hero-left { width:50%; flex-shrink:0; text-align:left; }
+
+    /* ── GLASSMORPHISM HERO CARD ── */
+    .hero-right {
+      width:45%; flex-shrink:0;
+      margin-left:auto;
+      animation:fadeUp 1s 2.0s ease both;
+    }
+    .hero-card {
+      position:relative;
+      width:100%;
+      background:rgba(5,18,42,0.65);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border:1px solid rgba(79,170,255,0.3);
+      border-radius:16px;
+      box-shadow:
+        0 0 0 1px rgba(79,170,255,0.07) inset,
+        0 0 56px rgba(79,170,255,0.14),
+        0 16px 48px rgba(0,0,0,0.5);
+      padding:28px 24px 24px;
+      overflow:hidden;
+    }
+    .card-label {
+      font-size:10px; font-weight:800; letter-spacing:0.32em;
+      text-transform:uppercase; color:rgba(255,255,255,0.7);
+      margin-bottom:16px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .card-label::before {
+      content:''; width:7px; height:7px; border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 10px #22c55e, 0 0 20px rgba(34,197,94,0.4);
+      animation:greenPulse 1.8s ease-in-out infinite;
+      flex-shrink:0;
+    }
+    @keyframes greenPulse {
+      0%,100% { opacity:1; box-shadow:0 0 10px #22c55e, 0 0 20px rgba(34,197,94,0.4); }
+      50%      { opacity:0.5; box-shadow:0 0 4px #22c55e; }
+    }
+
+    /* ── PV/SP TREND (was T-XY PHASE DIAGRAM) ── */
+    .mct-wrap {
+      width:100%; aspect-ratio:2/1;
+      background:rgba(0,0,0,0.28);
+      border:1px solid rgba(79,170,255,0.12);
+      border-radius:8px;
+      margin-bottom:24px;
+      overflow:hidden;
+      padding:6px;
+    }
+    .mct-diagram { width:100%; height:100%; }
+    .mct-grid  { stroke:rgba(79,170,255,0.09); stroke-width:0.6; }
+    .mct-axis  { stroke:rgba(79,170,255,0.3);  stroke-width:0.8; fill:none; }
+
+    /* setpoint dashed line */
+    .pvsp-sp-line {
+      stroke:rgba(255,255,255,0.45);
+      stroke-width:1.2;
+      stroke-dasharray:5 4;
+      fill:none;
+    }
+
+    /* PV response curve (drawn + animated via JS) */
+    .pvsp-trend-path {
+      fill:none; stroke:#4FAAFF; stroke-width:2.2;
+      stroke-linecap:round; stroke-linejoin:round;
+      filter:drop-shadow(0 0 5px rgba(79,170,255,0.85));
+    }
+    .pvsp-trend-dot {
+      fill:#4FAAFF;
+      filter:drop-shadow(0 0 6px rgba(79,170,255,0.95));
+    }
+
+    .txy-label {
+      fill:rgba(255,255,255,0.55);
+      font-size:7px; font-family:Montserrat,sans-serif;
+      font-weight:700; letter-spacing:0.08em;
+    }
+    .txy-label.pv { fill:#4FAAFF; }
+
+    .card-stats {
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .card-stat {
+      display:flex; flex-direction:column;
+      align-items:center; text-align:center; flex:1;
+    }
+    .card-stat .n {
+      font-size:22px; font-weight:900; color:var(--signal);
+      letter-spacing:-0.02em; line-height:1;
+    }
+    .card-stat .l {
+      font-size:7.5px; font-weight:700; letter-spacing:0.14em;
+      text-transform:uppercase; color:var(--muted); margin-top:6px;
+    }
+    .card-stat-div {
+      width:1px; height:40px;
+      background:rgba(79,170,255,0.2); flex-shrink:0;
+    }
+
+    .hero-badge { animation:fadeDown 1s .8s ease both; }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-14px);} to{opacity:1;transform:translateY(0);} }
+
+    .hero h1 {
+      margin:32px 0 10px;
+      perspective:600px;
+    }
+    .hero h1 .go {
+      display:block;
+      font-size:clamp(60px,16vw,140px);
+      color:#fff; letter-spacing:-0.02em;
+      animation:cineUp 1.2s 1.0s cubic-bezier(.16,1,.3,1) both;
+    }
+    .hero h1 .edge {
+      display:block;
+      font-size:clamp(52px,14vw,124px);
+      color:var(--signal); letter-spacing:-0.02em;
+      text-shadow:0 0 50px rgba(79,170,255,0.5);
+      animation:cineUp 1.2s 1.18s cubic-bezier(.16,1,.3,1) both,
+                glowPulse 5s 2.8s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%,100%{text-shadow:0 0 40px rgba(79,170,255,0.4);}
+      50%{text-shadow:0 0 80px rgba(79,170,255,0.75);}
+    }
+    .hero h1 .eng {
+      display:block;
+      font-size:clamp(24px,7vw,58px);
+      font-weight:300; letter-spacing:0.2em;
+      color:rgba(255,255,255,0.75);
+      animation:cineUp 1.2s 1.36s cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes cineUp {
+      from{opacity:0;transform:translateY(55px) rotateX(16deg);filter:blur(8px);}
+      to{opacity:1;transform:translateY(0) rotateX(0);filter:blur(0);}
+    }
+
+    .hero-sub {
+      font-size:15px; color:var(--muted); line-height:1.75;
+      max-width:520px; margin:28px 0 0;
+      animation:fadeUp 1s 1.6s ease both;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
+
+    /* ADVANTAGE CALLOUT */
+    .advantage-box {
+      max-width:520px; margin:28px 0 32px;
+      background:rgba(79,170,255,0.06);
+      border:1px solid rgba(79,170,255,0.22);
+      border-radius:4px;
+      padding:22px 26px;
+      animation:fadeUp 1s 1.7s ease both;
+    }
+    .advantage-label {
+      font-size:12px; font-weight:800; letter-spacing:0.28em;
+      text-transform:uppercase; color:var(--signal);
+      margin-bottom:10px; display:block;
+    }
+    .advantage-box p {
+      font-size:13px; color:var(--muted); line-height:1.75;
+    }
+
+    .hero-ctas {
+      display:flex; align-items:center; gap:16px;
+      animation:fadeUp 1s 1.8s ease both;
+    }
+
+    /* PROCESS PIPELINE STRIP */
+    .pipeline-strip {
+      position:relative; z-index:1;
+      background:rgba(79,170,255,0.06);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      padding:26px 0;
+      display:flex; align-items:center; justify-content:center;
+      gap:18px; flex-wrap:wrap;
+    }
+    .pipeline-step {
+      font-size:12px; font-weight:800; letter-spacing:0.16em;
+      text-transform:uppercase; color:var(--muted);
+      animation:pipelineCycle 8s ease-in-out infinite;
+    }
+    .pipeline-step.step-1 { animation-delay:0s; }
+    .pipeline-step.step-2 { animation-delay:1.6s; }
+    .pipeline-step.step-3 { animation-delay:3.2s; }
+    .pipeline-step.step-4 { animation-delay:4.8s; }
+    .pipeline-step.step-5 { animation-delay:6.4s; }
+    @keyframes pipelineCycle {
+      0%, 100% { color:var(--muted); text-shadow:none; }
+      6%, 14%  { color:var(--signal); text-shadow:0 0 18px rgba(79,170,255,0.6); }
+      20%      { color:var(--muted); text-shadow:none; }
+    }
+    .pipeline-arrow { color:rgba(79,170,255,0.35); font-size:12px; }
+
+    /* MARQUEES */
+    .marquee-wrap {
+      overflow:hidden;
+      border-bottom:1px solid var(--border);
+      padding:20px 0;
+    }
+    .marquee-wrap.alt { background:rgba(79,170,255,0.03); }
+    .marquee-track {
+      display:flex; gap:48px; white-space:nowrap; width:max-content;
+      animation:marqueeScroll 32s linear infinite;
+    }
+    .marquee-track span {
+      font-size:12px; font-weight:700; letter-spacing:0.16em;
+      text-transform:uppercase; color:var(--muted-dim);
+    }
+    @keyframes marqueeScroll {
+      from { transform:translateX(0); }
+      to   { transform:translateX(-50%); }
+    }
+
+    /* STATS BAND (4 items) */
+    .stats4-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:1px; background:var(--border);
+      border:1px solid var(--border);
+    }
+    .stat4-card {
+      background:var(--navy-dark);
+      padding:40px 28px;
+      text-align:center;
+    }
+    .stat4-card .n {
+      font-size:clamp(28px,4vw,40px); font-weight:900;
+      color:var(--signal); letter-spacing:-0.02em;
+      text-shadow:0 0 36px rgba(79,170,255,0.35);
+    }
+    .stat4-card .l {
+      font-size:11px; color:var(--muted);
+      margin-top:10px; line-height:1.5;
+    }
+
+    /* CTA BAND */
+    .cta-band {
+      position:relative; overflow:hidden;
+      background:linear-gradient(100deg, var(--navy) 0%, #0a2348 100%);
+      border:1px solid var(--border);
+      border-radius:4px;
+      padding:64px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:48px;
+      margin:80px auto;
+    }
+    .cta-band::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(60% 80% at 90% 50%, rgba(79,170,255,0.1), transparent);
+      pointer-events:none;
+    }
+    .cta-band-text h2 { font-size:clamp(24px,3vw,38px); margin-bottom:14px; }
+    .cta-band-text p { font-size:14px; color:var(--muted); line-height:1.7; max-width:480px; }
+    .cta-band-actions { display:flex; align-items:center; gap:16px; flex-shrink:0; }
+
+    @media (max-width:900px) {
+      .stats4-grid { grid-template-columns:1fr 1fr; }
+      .cta-band { flex-direction:column; padding:40px; }
+      .hero-content { flex-direction:column; padding:120px 1.5rem 0; gap:32px; }
+      .hero-left, .hero-right { width:100%; margin-left:0; }
+      .pipeline-strip { padding:20px 24px; }
+    }
+    @media (max-width:480px) {
+      .hero-content { padding:100px 1.25rem 0; gap:28px; }
+      .stats4-grid { grid-template-columns:1fr; }
+      .cta-band { padding:28px 20px; }
+      .card-stats { gap:8px; }
+      .card-stat .n { font-size:18px; }
+      .pipeline-step { font-size:10px; }
+    }
+
+    /* ── LIGHT THEME OVERRIDES ── */
+    html[data-theme="light"] .hero::before {
+      background:
+        radial-gradient(140% 100% at 20% 90%, #dce9fb 0%, transparent 55%),
+        radial-gradient(80% 60% at 78% 12%, #eaf2fc 0%, transparent 50%),
+        linear-gradient(160deg, #f7fafd 0%, #ffffff 70%);
+    }
+    html[data-theme="light"] .hero::after {
+      background:
+        radial-gradient(60% 50% at 80% 30%, rgba(21,101,201,0.10), transparent 70%),
+        radial-gradient(40% 35% at 10% 20%, rgba(21,101,201,0.06), transparent 70%);
+      mix-blend-mode:multiply;
+    }
+    html[data-theme="light"] .hero-card {
+      background:rgba(255,255,255,0.6);
+      border-color:rgba(10,31,61,0.15);
+      box-shadow:
+        0 0 0 1px rgba(10,31,61,0.05) inset,
+        0 0 56px rgba(21,101,201,0.10),
+        0 16px 48px rgba(13,46,92,0.18);
+    }
+    html[data-theme="light"] .card-label { color:rgba(10,31,61,0.7); }
+    html[data-theme="light"] .mct-wrap { background:rgba(10,31,61,0.05); }
+    html[data-theme="light"] .pvsp-sp-line { stroke:rgba(10,31,61,0.4); }
+    html[data-theme="light"] .txy-label { fill:rgba(10,31,61,0.55); }
+    html[data-theme="light"] .hero h1 .go { color:#0a1f3d; }
+    html[data-theme="light"] .hero h1 .eng { color:rgba(10,31,61,0.75); }
+    html[data-theme="light"] .cta-band {
+      background:linear-gradient(100deg, #eaf2fc 0%, #dbe9fb 100%);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Go Edgeless Engineering",
+    "description": "AI-powered process engineering consultancy. Concept through detailed design, commissioning and optimisation — for coal, chemical, waste-to-energy, thermal and wastewater industries.",
+    "url": "https://goedgeless.mohammedalsewari06.workers.dev/home",
+    "logo": "https://goedgeless.mohammedalsewari06.workers.dev/Material/Logo_White_tran.svg",
+    "image": "https://goedgeless.mohammedalsewari06.workers.dev/Material/og-image.png",
+    "telephone": "+61421555010",
+    "email": "Maz@goeleng.com.au",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toowoomba",
+      "addressRegion": "QLD",
+      "addressCountry": "AU"
+    },
+    "areaServed": "AU"
+  }
+  </script>
+  <script>if(sessionStorage.getItem('preloaderShown')){document.documentElement.classList.add('preloader-done');}</script>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div id="preloader">
+    <img src="Material/Logo_White_tran.svg" alt="Go Edgeless Engineering" class="preloader-logo">
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-bar">
+      <a class="nav-brand" href="/home">
+        <img src="Material/Logo_White_tran.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-dark">
+        <img src="Material/Logo_White_tran_light.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-light">
+      </a>
+      <div class="nav-bar-right">
+        <ul class="nav-links">
+          <li><a href="/home" class="active">Home</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Start a Project</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light mode">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav-hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile-panel">
+      <div class="nav-mobile-panel-inner">
+        <ul class="nav-panel-links">
+          <li><a href="/home" class="active">Home</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html">Start a Project</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="grid-overlay"></div>
+      <div class="beam"></div>
+      <div class="scan-line"></div>
+
+      <div class="hero-content">
+
+        <!-- LEFT: Text -->
+        <div class="hero-left">
+          <div class="hero-badge">
+            <div class="badge">
+              <span class="dot"></span>
+              AI-Powered Engineering
+            </div>
+          </div>
+
+          <h1>
+            <span class="go">GO</span>
+            <span class="edge">EDGELESS</span>
+            <span class="eng">ENGINEERING</span>
+          </h1>
+
+          <p class="hero-sub">Intelligent design. Hands-on execution. We engineer efficiently — making every build easy and feasible. From your first idea through concept, detailed design, construction and commissioning, then into optimised operation — we own the full journey.</p>
+
+          <div class="advantage-box">
+            <span class="advantage-label">The Edgeless Advantage</span>
+            <p>Our AI-assisted design workflow enhances engineering efficiency by automatically cross-checking drawings, calculations, and project documentation — combined with experienced engineering oversight to reduce errors and deliver faster, more cost-effective outcomes.</p>
+          </div>
+
+          <div class="hero-ctas">
+            <a href="contact.html" class="btn btn-primary">Start a Project <span>→</span></a>
+            <a href="about.html" class="btn btn-ghost">Our Story</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Glassmorphism Card -->
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="card-label">Precision without The Edge</div>
+
+            <!-- PV/SP Trend -->
+            <div class="mct-wrap">
+              <svg class="mct-diagram" viewBox="0 0 300 150" preserveAspectRatio="none">
+
+                <!-- Grid -->
+                <line class="mct-grid" x1="91"  y1="12" x2="91"  y2="130"/>
+                <line class="mct-grid" x1="154" y1="12" x2="154" y2="130"/>
+                <line class="mct-grid" x1="217" y1="12" x2="217" y2="130"/>
+                <line class="mct-grid" x1="28"  y1="43" x2="280" y2="43"/>
+                <line class="mct-grid" x1="28"  y1="74" x2="280" y2="74"/>
+                <line class="mct-grid" x1="28"  y1="105" x2="280" y2="105"/>
+
+                <!-- Axes -->
+                <line class="mct-axis" x1="28" y1="130" x2="280" y2="130"/>
+                <line class="mct-axis" x1="28" y1="12"  x2="28"  y2="130"/>
+
+                <!-- Setpoint dashed line -->
+                <line class="pvsp-sp-line" x1="28" y1="55" x2="280" y2="55"/>
+
+                <!-- PV response curve: rise above SP, dip below SP, settle on SP -->
+                <path class="pvsp-trend-path"
+                  d="M28,112 C50,112 58,34 85,31 C105,29 112,76 140,73 C162,71 205,55 280,55"/>
+
+                <!-- traveling dot -->
+                <circle class="pvsp-trend-dot" cx="28" cy="112" r="3"/>
+
+                <!-- labels -->
+                <text class="txy-label"    x="22" y="58"  text-anchor="end">SP</text>
+                <text class="txy-label pv" x="22" y="115" text-anchor="end">PV</text>
+              </svg>
+            </div>
+
+            <!-- Stats -->
+            <div class="card-stats">
+              <div class="card-stat">
+                <span class="n"><span class="count" data-to="6">6</span>+</span>
+                <span class="l">Years Experience</span>
+              </div>
+              <div class="card-stat-div"></div>
+              <div class="card-stat">
+                <span class="n"><span class="count" data-to="1000">1000</span>+</span>
+                <span class="l">Deliverables</span>
+              </div>
+              <div class="card-stat-div"></div>
+              <div class="card-stat">
+                <span class="n">RPEQ</span>
+                <span class="l">Chartered Track</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESS PIPELINE STRIP -->
+    <div class="pipeline-strip">
+      <span class="pipeline-step step-1">Concept</span>
+      <span class="pipeline-arrow">→</span>
+      <span class="pipeline-step step-2">Detailed Design</span>
+      <span class="pipeline-arrow">→</span>
+      <span class="pipeline-step step-3">Build</span>
+      <span class="pipeline-arrow">→</span>
+      <span class="pipeline-step step-4">Commission</span>
+      <span class="pipeline-arrow">→</span>
+      <span class="pipeline-step step-5">Optimise</span>
+    </div>
+
+    <!-- INDUSTRIES MARQUEE -->
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>Coal &amp; Mineral Processing</span>
+        <span>Chemical &amp; Manufacturing</span>
+        <span>Waste-to-Energy</span>
+        <span>Thermal Processes</span>
+        <span>Wastewater Treatment</span>
+        <span>Oil &amp; Gas</span>
+        <span>And More</span>
+        <span>Coal &amp; Mineral Processing</span>
+        <span>Chemical &amp; Manufacturing</span>
+        <span>Waste-to-Energy</span>
+        <span>Thermal Processes</span>
+        <span>Wastewater Treatment</span>
+        <span>Oil &amp; Gas</span>
+        <span>And More</span>
+      </div>
+    </div>
+
+    <!-- DELIVERABLES MARQUEE -->
+    <div class="marquee-wrap alt">
+      <div class="marquee-track" style="animation-direction:reverse;">
+        <span>Concept Studies</span>
+        <span>FEED Design</span>
+        <span>Detailed Design</span>
+        <span>Commissioning &amp; Optimisation</span>
+        <span>Process Design and Drafting</span>
+        <span>Equipment Sizing and Selection</span>
+        <span>Concept Studies</span>
+        <span>FEED Design</span>
+        <span>Detailed Design</span>
+        <span>Commissioning &amp; Optimisation</span>
+        <span>Process Design and Drafting</span>
+        <span>Equipment Sizing and Selection</span>
+      </div>
+    </div>
+
+    <!-- STATS BAND -->
+    <section class="section--tight">
+      <div class="container">
+        <div class="stats4-grid reveal">
+          <div class="stat4-card">
+            <div class="n">6+</div>
+            <div class="l">Years across site &amp; design</div>
+          </div>
+          <div class="stat4-card">
+            <div class="n">1000+</div>
+            <div class="l">Process engineering deliverables</div>
+          </div>
+          <div class="stat4-card">
+            <div class="n">RPEQ</div>
+            <div class="l">Registered &amp; chartered-track</div>
+          </div>
+          <div class="stat4-card">
+            <div class="n">AI+</div>
+            <div class="l">Augmented engineering workflow</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <div class="container">
+      <div class="cta-band reveal">
+        <div class="cta-band-text">
+          <h2>Ready to unlock the value we can deliver?</h2>
+          <p>Tell us where your project stands. We'll come back with a clear scope — no obligation.</p>
+        </div>
+        <div class="cta-band-actions">
+          <a href="contact.html" class="btn btn-primary">Start a Project →</a>
+          <a href="about.html" class="btn btn-ghost">Our Story</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-brand" href="/home" style="text-decoration:none;">
+            <img src="Material/Logo_White_tran.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-dark">
+            <img src="Material/Logo_White_tran_light.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-light">
+          </a>
+          <p>Process · Design · Consultancy. Based in Toowoomba, QLD — AI-powered process engineering from concept through commissioning and optimisation.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Site</h4>
+          <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="contact.html">Start a Project</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:Maz@goeleng.com.au">Maz@goeleng.com.au</a></li>
+            <li><a href="tel:+61421555010">0421 555 010</a></li>
+            <li>Toowoomba, QLD</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span class="yr">2026</span> Go Edgeless Engineering. All rights reserved.</span>
+        <span>ABN Registered · Insured · Confidentiality on request</span>
+      </div>
+      <div class="footer-credit">Website designed by <a href="https://sewari.dev" target="_blank" rel="noopener noreferrer">Sewari</a></div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+
+  <!-- PV/SP trend animation (scoped, does not touch site.js) -->
+  <script>
+  (function(){
+    function initPvSpTrend(){
+      var path = document.querySelector('.pvsp-trend-path');
+      var dot  = document.querySelector('.pvsp-trend-dot');
+      if(!path || !dot) return;
+
+      var L = path.getTotalLength();
+      path.style.strokeDasharray = L;
+      path.style.strokeDashoffset = L;
+
+      var DRAW_MS = 4200;
+      var HOLD_MS = 1600;
+      var startPt = path.getPointAtLength(0);
+
+      function ease(t){
+        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+      }
+
+      var phaseStart = null;
+      var mode = 'draw';
+
+      function frame(ts){
+        if(phaseStart === null) phaseStart = ts;
+        var elapsed = ts - phaseStart;
+
+        if(mode === 'draw'){
+          var t = Math.min(elapsed / DRAW_MS, 1);
+          var et = ease(t);
+          path.style.strokeDashoffset = L * (1 - et);
+          var p = path.getPointAtLength(L * et);
+          dot.setAttribute('cx', p.x);
+          dot.setAttribute('cy', p.y);
+          if(t >= 1){ mode = 'hold'; phaseStart = ts; }
+        } else if(mode === 'hold'){
+          if(elapsed >= HOLD_MS){
+            path.style.strokeDashoffset = L;
+            dot.setAttribute('cx', startPt.x);
+            dot.setAttribute('cy', startPt.y);
+            mode = 'draw';
+            phaseStart = ts;
+          }
+        }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', initPvSpTrend);
+    } else {
+      initPvSpTrend();
+    }
+  })();
+  </script>
+</body>
+</html>

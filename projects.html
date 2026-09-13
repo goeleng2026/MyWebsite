@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Projects — GoEdgeless Engineering</title>
+  <meta name="description" content="Selected case studies: chemical plant redesign, coal preparation plant documentation, and 3D FEED for an oilfield polymer hydration unit."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── PROJECTS-SPECIFIC ── */
+
+    .projects-hero-bg {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(60% 50% at 80% 20%, rgba(79,170,255,0.12), transparent 60%),
+        linear-gradient(160deg, #071d3d 0%, #04132b 100%);
+    }
+
+    /* PROJECT CARDS */
+    .case-study {
+      padding:80px 0;
+      border-bottom:1px solid var(--border);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:start;
+    }
+    .case-study:last-child { border-bottom:none; }
+    .case-study.reverse { direction:rtl; }
+    .case-study.reverse > * { direction:ltr; }
+
+    .case-visual {
+      position:relative;
+      background:linear-gradient(160deg, #0d2e5c 0%, #071d3d 100%);
+      border:1px solid var(--border);
+      border-radius:2px;
+      aspect-ratio:4/3;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .case-visual::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(60% 50% at 50% 40%, rgba(79,170,255,0.1), transparent);
+    }
+    .case-num {
+      font-size:clamp(80px,10vw,140px); font-weight:900;
+      color:rgba(79,170,255,0.08); letter-spacing:-0.04em;
+      position:absolute; bottom:-10px; right:16px;
+      line-height:1;
+    }
+    .case-label {
+      position:absolute; top:20px; left:20px;
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(4,19,43,0.8);
+      border:1px solid var(--border);
+      backdrop-filter:blur(4px);
+      padding:7px 14px; border-radius:2px;
+      font-size:9px; font-weight:800; letter-spacing:0.26em;
+      text-transform:uppercase; color:var(--signal);
+    }
+    .case-label .dot { width:5px; height:5px; border-radius:50%; background:var(--signal); }
+
+    .case-content { display:flex; flex-direction:column; justify-content:center; }
+    .case-industry {
+      display:inline-flex;
+      font-size:9px; font-weight:800; letter-spacing:0.28em;
+      text-transform:uppercase; color:var(--signal);
+      border:1px solid rgba(79,170,255,0.25);
+      padding:5px 12px; border-radius:2px;
+      margin-bottom:24px; width:fit-content;
+    }
+    .case-content h2 {
+      font-size:clamp(22px,3vw,36px);
+      margin-bottom:20px;
+      text-transform:uppercase; letter-spacing:0.02em;
+    }
+    .case-content p {
+      font-size:14px; color:var(--muted); line-height:1.8;
+      margin-bottom:16px;
+    }
+
+    .case-meta {
+      display:grid; grid-template-columns:repeat(2,1fr);
+      gap:1px; background:var(--border);
+      border:1px solid var(--border);
+      margin-top:32px;
+    }
+    .case-meta-item {
+      background:var(--navy-dark);
+      padding:16px 20px;
+    }
+    .case-meta-item .k {
+      font-size:8px; font-weight:800; letter-spacing:0.28em;
+      text-transform:uppercase; color:var(--signal);
+      margin-bottom:5px; display:block;
+    }
+    .case-meta-item .v {
+      font-size:13px; font-weight:600; color:var(--white);
+    }
+
+    /* CTA BAND */
+    .projects-cta {
+      position:relative; overflow:hidden;
+      background:linear-gradient(100deg, var(--navy) 0%, #0a2348 100%);
+      border:1px solid var(--border);
+      border-radius:4px;
+      padding:64px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:48px;
+      margin:80px auto;
+    }
+    .projects-cta::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(60% 80% at 85% 50%, rgba(79,170,255,0.1), transparent);
+      pointer-events:none;
+    }
+    .projects-cta-text h2 { font-size:clamp(22px,3vw,36px); margin-bottom:14px; }
+    .projects-cta-text p { font-size:14px; color:var(--muted); line-height:1.7; max-width:480px; }
+    .projects-cta-actions { display:flex; align-items:center; gap:16px; flex-shrink:0; }
+
+    @media (max-width:900px) {
+      .case-study { grid-template-columns:1fr; gap:40px; }
+      .case-study.reverse { direction:ltr; }
+      .projects-cta { flex-direction:column; padding:40px; }
+      .case-meta { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a class="nav-brand" href="index.html">
+      <img src="Material/Logo_White_tran.svg" alt="GoEdgeless Engineering" class="nav-logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Send Enquiry</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-header">
+      <a class="nav-brand" href="index.html">
+        <img src="Material/Logo_White_tran.svg" alt="GoEdgeless Engineering" class="nav-logo">
+      </a>
+      <button class="nav-drawer-close" id="navClose" aria-label="Close menu">✕</button>
+    </div>
+    <ul class="nav-drawer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-drawer-cta">Send Enquiry →</a>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="projects-hero-bg"></div>
+      <div class="grid-overlay"></div>
+      <div class="beam"></div>
+      <div class="container page-hero-inner">
+        <div class="breadcrumb"><a href="index.html">Home</a> / Projects</div>
+        <h1>Selected case studies<br>across <em>heavy industry.</em></h1>
+        <p>Three projects that illustrate the kind of work — redesign of a chemical plant after an incident, delivery of design documentation from limited source material on a coal preparation plant, and 3D FEED for an oilfield polymer hydration unit.</p>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="section">
+      <div class="container">
+
+        <!-- CASE 01 -->
+        <div class="case-study reveal">
+          <div class="case-visual">
+            <div class="case-num">01</div>
+            <div class="case-label"><span class="dot"></span>Chemical Industry</div>
+          </div>
+          <div class="case-content">
+            <span class="case-industry">Chemical Industry</span>
+            <h2>Waste handling plant redesign &amp; paint cans facility optimisation</h2>
+            <p>Following a 2013 incident at a chemical site, GoEdgeless Engineering led the redesign of the waste handling plant — re-working the process flow, segregation strategy, and instrumentation to bring the facility back into safe, compliant operation.</p>
+            <p>Adjacent to that work, the same site's paint cans manufacturing facility was reviewed for process optimisation: bottlenecks identified, line balancing recommended, and a redrawn set of P&amp;IDs issued so the as-built plant matched its documentation again.</p>
+            <div class="case-meta">
+              <div class="case-meta-item">
+                <span class="k">Timeline</span>
+                <span class="v">2013 → Ongoing engagement</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">Scope</span>
+                <span class="v">2 plants — waste + paint cans</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">Deliverables</span>
+                <span class="v">PFD / P&amp;ID — Full document set</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">Outcome</span>
+                <span class="v">Safety-led — Brought back into compliance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE 02 -->
+        <div class="case-study reverse reveal">
+          <div class="case-visual">
+            <div class="case-num">02</div>
+            <div class="case-label"><span class="dot"></span>Mining Industry</div>
+          </div>
+          <div class="case-content">
+            <span class="case-industry">Mining Industry</span>
+            <h2>New Wilkie Energy — coal preparation plant documentation</h2>
+            <p>For the New Wilkie Energy coal preparation plant, the brief was to deliver a complete set of process engineering documents working from a limited starting reference package. The engagement included reconstructing process logic from vendor data and site walk-down, then issuing the documentation needed for procurement and construction support.</p>
+            <p>Deliverables included the full Process Flow Diagram, Piping &amp; Instrumentation Diagrams, and Equipment / line / valve lists — drawn to the client's title block and integrated into their document control system.</p>
+            <div class="case-meta">
+              <div class="case-meta-item">
+                <span class="k">Deliverable</span>
+                <span class="v">PFD — Process Flow Diagram</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">Deliverable</span>
+                <span class="v">P&amp;ID — Piping &amp; Instrumentation</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">Deliverable</span>
+                <span class="v">Items lists — Equipment, line &amp; valve registers</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">Starting point</span>
+                <span class="v">Limited inputs — Reconstructed from vendor data</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE 03 -->
+        <div class="case-study reveal">
+          <div class="case-visual">
+            <div class="case-num">03</div>
+            <div class="case-label"><span class="dot"></span>Oil &amp; Gas</div>
+          </div>
+          <div class="case-content">
+            <span class="case-industry">Oil &amp; Gas</span>
+            <h2>AMAST International — FEED for a polymer hydration unit</h2>
+            <p>For AMAST International, GoEdgeless Engineering delivered the Front-End Engineering Design for a polymer hydration unit — the package that produces friction-reducing polymer for downhole injection in oil wells. The work spanned process definition, equipment sizing and instrumentation, through to a 3D plant layout.</p>
+            <p>The 3D layout was modelled in Autodesk Inventor to confirm equipment arrangement, operability, maintenance access and pipework routing before commitment to detailed design — a low-cost de-risking step that paid for itself in change orders avoided.</p>
+            <div class="case-meta">
+              <div class="case-meta-item">
+                <span class="k">Package</span>
+                <span class="v">FEED — Front-End Engineering Design</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">3D Modelling</span>
+                <span class="v">Autodesk Inventor — Plant layout</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">Application</span>
+                <span class="v">Polymer — Friction reduction for well injection</span>
+              </div>
+              <div class="case-meta-item">
+                <span class="k">Client</span>
+                <span class="v">AMAST International</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="container">
+      <div class="projects-cta reveal">
+        <div class="projects-cta-text">
+          <h2>Have a project that looks like one of these?</h2>
+          <p>If any of the above matches a brief you're scoping — redesign, documentation rebuild, or FEED — we should talk. Send a brief and we'll respond with a clear scope within one business day.</p>
+        </div>
+        <div class="projects-cta-actions">
+          <a href="contact.html" class="btn btn-primary">Send Enquiry →</a>
+          <a href="services.html" class="btn btn-ghost">See Services</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-brand" href="index.html" style="text-decoration:none;">
+            <img src="Material/Logo_White_tran.svg" alt="GoEdgeless Engineering" class="nav-logo">
+          </a>
+          <p>Chemical &amp; process engineering consultancy. Based in Australia, delivering process design, drafting and optimisation to firms across heavy industry.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Site</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#process-design">Process Design</a></li>
+            <li><a href="services.html#process-drafting">Process Drafting</a></li>
+            <li><a href="services.html#process-solutions">Process Solutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@goedgeless.com.au">hello@goedgeless.com.au</a></li>
+            <li><a href="tel:+61421555010">+61 421 555 010</a></li>
+            <li>Australia — Nationwide</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span class="yr">2026</span> GoEdgeless Engineering. All rights reserved.</span>
+        <span>ABN Registered · Insured · Confidentiality on request</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

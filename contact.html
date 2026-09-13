@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light');}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Start a Project — Go Edgeless Engineering</title>
+  <meta name="description" content="Select the phase that matches where your project stands — Concept, FEED, Detailed Design, Commissioning or Optimisation — and send us a brief."/>
+  <link rel="canonical" href="https://goedgeless.mohammedalsewari06.workers.dev/contact.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Go Edgeless Engineering"/>
+  <meta property="og:title" content="Start a Project — Go Edgeless Engineering"/>
+  <meta property="og:description" content="Select the phase that matches where your project stands — Concept, FEED, Detailed Design, Commissioning or Optimisation — and send us a brief."/>
+  <meta property="og:url" content="https://goedgeless.mohammedalsewari06.workers.dev/contact.html"/>
+  <meta property="og:image" content="https://goedgeless.mohammedalsewari06.workers.dev/Material/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Start a Project — Go Edgeless Engineering"/>
+  <meta name="twitter:description" content="Select the phase that matches where your project stands — Concept, FEED, Detailed Design, Commissioning or Optimisation — and send us a brief."/>
+  <meta name="twitter:image" content="https://goedgeless.mohammedalsewari06.workers.dev/Material/og-image.png"/>
+  <link rel="icon" type="image/png" href="Material/favicon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── CONTACT-SPECIFIC ── */
+
+    .contact-hero-bg {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(80% 60% at 60% 20%, rgba(79,170,255,0.12), transparent 55%),
+        linear-gradient(160deg, #0a2348 0%, #04132b 100%);
+    }
+
+    /* ENQUIRY SELECTOR */
+    .enquiry-section { padding:80px 0; }
+
+    /* PHASE SELECTOR */
+    .selector-label {
+      font-size:12px; font-weight:800; letter-spacing:0.32em;
+      text-transform:uppercase; color:var(--signal);
+      margin-bottom:20px; display:block;
+    }
+
+    .phase-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1px; background:var(--border);
+      border:1px solid var(--border);
+      margin-bottom:32px;
+    }
+    .phase-grid .phase-card:nth-child(5) { grid-column:span 2; }
+    .phase-card {
+      background:var(--navy-dark);
+      padding:32px 28px;
+      cursor:pointer;
+      position:relative; overflow:hidden;
+      transition:background 0.25s;
+      user-select:none;
+    }
+    .phase-card::before {
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:2px; background:var(--signal);
+      transform:scaleX(0); transition:transform 0.25s;
+      transform-origin:left;
+    }
+    .phase-card:hover { background:rgba(79,170,255,0.04); }
+    .phase-card.selected { background:rgba(79,170,255,0.08); }
+    .phase-card.selected::before { transform:scaleX(1); }
+
+    .phase-tick {
+      position:absolute; top:16px; right:16px;
+      width:20px; height:20px; border-radius:50%;
+      background:var(--signal); border:2px solid var(--signal);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; transform:scale(0.5);
+      transition:opacity 0.2s, transform 0.2s;
+    }
+    .phase-tick svg { stroke:#fff; }
+    .phase-card.selected .phase-tick { opacity:1; transform:scale(1); }
+
+    .phase-num {
+      font-size:12px; font-weight:800; letter-spacing:0.28em;
+      color:var(--signal); margin-bottom:12px; display:block;
+    }
+    .phase-tag {
+      font-size:12px; font-weight:700; letter-spacing:0.2em;
+      color:var(--muted-dim); text-transform:uppercase;
+      margin-bottom:8px; display:block;
+    }
+    .phase-name {
+      font-size:16px; font-weight:800; letter-spacing:0.04em;
+      text-transform:uppercase; margin-bottom:12px;
+    }
+    .phase-desc {
+      font-size:12px; color:var(--muted); line-height:1.65;
+      margin-bottom:16px;
+    }
+    .phase-items {
+      list-style:none; display:flex; flex-direction:column; gap:6px;
+    }
+    .phase-items li {
+      font-size:11px; color:var(--muted-dim);
+      display:flex; align-items:center; gap:8px;
+    }
+    .phase-items li::before {
+      content:''; width:4px; height:4px; border-radius:50%;
+      background:rgba(79,170,255,0.4); flex-shrink:0;
+    }
+
+    /* SUPPORT SERVICES */
+    .support-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:1px; background:var(--border);
+      border:1px solid var(--border);
+      margin-bottom:48px;
+    }
+    .support-card {
+      background:var(--navy-dark);
+      padding:20px 20px;
+      cursor:pointer;
+      display:flex; align-items:center; gap:14px;
+      transition:background 0.2s;
+      user-select:none;
+      position:relative;
+    }
+    .support-card:hover { background:rgba(79,170,255,0.04); }
+    .support-card.selected { background:rgba(79,170,255,0.08); }
+    .support-icon { font-size:20px; flex-shrink:0; }
+    .support-name { font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
+    .support-mini { font-size:11px; color:var(--muted); margin-top:2px; }
+    .support-check {
+      position:absolute; top:10px; right:12px;
+      width:16px; height:16px; border-radius:50%;
+      background:var(--signal);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; transform:scale(0.5);
+      transition:opacity 0.2s, transform 0.2s;
+    }
+    .support-check svg { stroke:#fff; }
+    .support-card.selected .support-check { opacity:1; transform:scale(1); }
+
+    /* CONTACT FORM */
+    .contact-form-wrap {
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border);
+      padding:48px;
+      border-radius:2px;
+    }
+    .contact-form-head {
+      margin-bottom:32px;
+    }
+    .contact-form-head h3 { font-size:22px; text-transform:uppercase; letter-spacing:0.04em; }
+    .contact-form-head p { font-size:13px; color:var(--muted); margin-top:8px; line-height:1.6; }
+
+    /* SELECTION SUMMARY */
+    .selection-summary {
+      background:rgba(79,170,255,0.06);
+      border:1px solid rgba(79,170,255,0.2);
+      border-radius:2px; padding:20px 24px;
+      margin-bottom:24px;
+      display:none;
+    }
+    .selection-summary.visible { display:block; }
+    .selection-summary-label {
+      font-size:12px; font-weight:800; letter-spacing:0.28em;
+      text-transform:uppercase; color:var(--signal); margin-bottom:12px;
+    }
+    .selection-chips {
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .chip {
+      display:inline-flex; align-items:center; gap:6px;
+      background:rgba(79,170,255,0.12);
+      border:1px solid rgba(79,170,255,0.25);
+      border-radius:2px; padding:5px 12px;
+      font-size:10px; font-weight:700; letter-spacing:0.12em;
+      text-transform:uppercase; color:var(--signal);
+    }
+
+    /* FORM ERROR */
+    .form-error {
+      display:none;
+      align-items:center; gap:10px;
+      background:rgba(239,68,68,0.08);
+      border:1px solid rgba(239,68,68,0.3);
+      border-radius:2px; padding:14px 16px;
+      margin-bottom:20px;
+      font-size:13px; color:#f87171; line-height:1.5;
+    }
+    .form-error.visible { display:flex; }
+
+    /* DIRECT CONTACT PANEL */
+    .contact-grid {
+      display:grid; grid-template-columns:1fr 1.6fr;
+      gap:40px; margin-top:80px;
+    }
+    .direct-contact {
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border);
+      padding:40px;
+      border-radius:2px;
+      height:fit-content;
+      position:sticky; top:100px;
+    }
+    .direct-contact h3 { font-size:22px; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:8px; }
+    .direct-contact > p { font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:32px; }
+
+    .contact-item {
+      display:flex; align-items:flex-start; gap:16px;
+      padding:16px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .contact-item:last-child { border-bottom:none; }
+    .contact-item-icon {
+      width:36px; height:36px; flex-shrink:0;
+      background:var(--signal-dim);
+      border:1px solid rgba(79,170,255,0.2);
+      border-radius:2px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .contact-item-icon svg { stroke:var(--signal); }
+    .contact-item-label {
+      font-size:10px; font-weight:800; letter-spacing:0.28em;
+      text-transform:uppercase; color:var(--signal); margin-bottom:4px;
+    }
+    .contact-item-val {
+      font-size:13px; font-weight:600;
+    }
+    .contact-item-val a { color:var(--white); text-decoration:none; }
+    .contact-item-val a:hover { color:var(--signal); }
+
+    /* SUCCESS STATE */
+    .form-success {
+      display:none; text-align:center; padding:48px 24px;
+    }
+    .form-success.show { display:block; }
+    .success-icon {
+      width:64px; height:64px; border-radius:50%;
+      background:rgba(79,170,255,0.12);
+      border:2px solid var(--signal);
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 24px;
+      box-shadow:0 0 40px rgba(79,170,255,0.3);
+    }
+    .success-icon svg { stroke:var(--signal); }
+    .form-success h3 { font-size:24px; text-transform:uppercase; margin-bottom:12px; }
+    .form-success p { font-size:14px; color:var(--muted); line-height:1.7; }
+
+    /* SUBMIT BUTTON STATES */
+    .btn-submit { width:100%; justify-content:center; font-size:12px; padding:16px; }
+    .btn-submit:disabled { opacity:0.5; cursor:not-allowed; }
+
+    /* CLOSING CTA */
+    .cta-band {
+      position:relative; overflow:hidden;
+      background:linear-gradient(100deg, var(--navy) 0%, #0a2348 100%);
+      border:1px solid var(--border);
+      border-radius:4px;
+      padding:64px;
+      text-align:center;
+      margin:80px auto 0;
+    }
+    .cta-band::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(60% 80% at 90% 50%, rgba(79,170,255,0.1), transparent);
+      pointer-events:none;
+    }
+    .cta-band h2 { font-size:clamp(22px,3vw,34px); margin-bottom:12px; position:relative; z-index:1; }
+    .cta-band p { font-size:14px; color:var(--muted); line-height:1.7; max-width:520px; margin:0 auto; position:relative; z-index:1; }
+
+    @media (max-width:900px) {
+      .phase-grid { grid-template-columns:1fr; }
+      .phase-grid .phase-card:nth-child(5) { grid-column:span 1; }
+      .support-grid { grid-template-columns:1fr 1fr; }
+      .contact-grid { grid-template-columns:1fr; }
+      .direct-contact { position:static; }
+      .contact-form-wrap { padding:32px 24px; }
+      .cta-band { padding:40px; }
+    }
+    @media (max-width:600px) {
+      .support-grid { grid-template-columns:1fr; }
+    }
+
+    /* ── LIGHT THEME OVERRIDES ── */
+    html[data-theme="light"] .contact-hero-bg {
+      background:
+        radial-gradient(80% 60% at 60% 20%, rgba(21,101,201,0.08), transparent 55%),
+        linear-gradient(160deg, #eef3fa 0%, #ffffff 100%);
+    }
+    html[data-theme="light"] .contact-form-wrap,
+    html[data-theme="light"] .direct-contact {
+      background:rgba(10,31,61,0.025);
+    }
+    html[data-theme="light"] .cta-band {
+      background:linear-gradient(100deg, #eaf2fc 0%, #dbe9fb 100%);
+    }
+    html[data-theme="light"] .form-error {
+      background:rgba(239,68,68,0.06);
+      border-color:rgba(239,68,68,0.35);
+      color:#b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-bar">
+      <a class="nav-brand" href="/home">
+        <img src="Material/Logo_White_tran.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-dark">
+        <img src="Material/Logo_White_tran_light.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-light">
+      </a>
+      <div class="nav-bar-right">
+        <ul class="nav-links">
+          <li><a href="/home">Home</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html" class="active">Start a Project</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light mode">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav-hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile-panel">
+      <div class="nav-mobile-panel-inner">
+        <ul class="nav-panel-links">
+          <li><a href="/home">Home</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="contact.html" class="active">Start a Project</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="contact-hero-bg"></div>
+      <div class="grid-overlay"></div>
+      <div class="beam"></div>
+      <div class="container page-hero-inner">
+        <div class="breadcrumb"><a href="/home">Home</a> / Start a Project</div>
+        <h1>Where does your<br>project <em>begin?</em></h1>
+        <p>Select the phase that matches where you are. Not sure? Start with Concept — we'll help you find your footing. Add any support services below.</p>
+      </div>
+    </section>
+
+    <!-- ENQUIRY SELECTOR -->
+    <section class="enquiry-section">
+      <div class="container">
+
+        <!-- PHASE SELECTOR -->
+        <span class="selector-label reveal">Select a project phase</span>
+        <div class="phase-grid reveal">
+
+          <div class="phase-card" data-name="Concept Design" onclick="selectPhase(this)">
+            <div class="phase-tick">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="phase-num">01</span>
+            <span class="phase-tag">Starting Fresh</span>
+            <div class="phase-name">Concept Design</div>
+            <p class="phase-desc">Turn an idea into an engineered concept — validate the technology and check the project stacks up before committing capital.</p>
+            <ul class="phase-items">
+              <li>Technology selection &amp; review</li>
+              <li>Block &amp; process flow diagrams</li>
+              <li>Shortcut calculations</li>
+              <li>Preliminary feasibility</li>
+            </ul>
+          </div>
+
+          <div class="phase-card" data-name="FEED Design" onclick="selectPhase(this)">
+            <div class="phase-tick">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="phase-num">02</span>
+            <span class="phase-tag">Concept Confirmed</span>
+            <div class="phase-name">FEED Design</div>
+            <p class="phase-desc">Front-end engineering — the basis for costing, procurement and project sanction.</p>
+            <ul class="phase-items">
+              <li>P&amp;ID development</li>
+              <li>Mass &amp; Energy Balances</li>
+              <li>Equipment sizing &amp; selection</li>
+              <li>CAPEX &amp; Updated Feasibility</li>
+              <li>Functional Description</li>
+              <li>Safety &amp; HAZOP Support</li>
+            </ul>
+          </div>
+
+          <div class="phase-card" data-name="Detailed Design" onclick="selectPhase(this)">
+            <div class="phase-tick">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="phase-num">03</span>
+            <span class="phase-tag">FEED Complete</span>
+            <div class="phase-name">Detailed Design</div>
+            <p class="phase-desc">A construction-ready package — every instrument, pipe and unit specified, sized and sourced.</p>
+            <ul class="phase-items">
+              <li>Detailed P&amp;IDs</li>
+              <li>Detailed Sizing Calculations</li>
+              <li>Instrument &amp; Equipment Selection</li>
+              <li>Safety &amp; HAZOP Study Support</li>
+              <li>Suppliers, logistics &amp; schedule</li>
+              <li>Functional Design Specifications (FDS)</li>
+              <li>Multi-Discipline Coordination</li>
+            </ul>
+          </div>
+
+          <div class="phase-card" data-name="Commissioning" onclick="selectPhase(this)">
+            <div class="phase-tick">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="phase-num">04</span>
+            <span class="phase-tag">Build Complete</span>
+            <div class="phase-name">Commissioning</div>
+            <p class="phase-desc">Pre-startup checks through to performance handover — proving the plant performs as designed under real operating conditions.</p>
+            <ul class="phase-items">
+              <li>Pre-commissioning checks &amp; punch lists</li>
+              <li>Startup &amp; loop testing</li>
+              <li>Performance &amp; acceptance testing</li>
+              <li>Operator training &amp; handover</li>
+            </ul>
+          </div>
+
+          <div class="phase-card" data-name="Optimisation" onclick="selectPhase(this)">
+            <div class="phase-tick">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="phase-num">05</span>
+            <span class="phase-tag">In Operation</span>
+            <div class="phase-name">Optimisation</div>
+            <p class="phase-desc">Ongoing performance tuning once the plant is running — lifting yield, reliability and efficiency beyond the original design basis.</p>
+            <ul class="phase-items">
+              <li>Process &amp; control tuning</li>
+              <li>Yield &amp; efficiency improvement</li>
+              <li>Troubleshooting &amp; root cause analysis</li>
+              <li>Upgrade &amp; expansion studies</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- SUPPORT SERVICES -->
+        <span class="selector-label reveal">Add support services (optional)</span>
+        <div class="support-grid reveal">
+          <div class="support-card" data-name="Peer Review" onclick="toggleSupport(this)">
+            <div class="support-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="support-icon">🔍</span>
+            <div>
+              <div class="support-name">Peer Review</div>
+              <div class="support-mini">Independent technical review</div>
+            </div>
+          </div>
+          <div class="support-card" data-name="Design Sign-Off" onclick="toggleSupport(this)">
+            <div class="support-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="support-icon">✅</span>
+            <div>
+              <div class="support-name">Design Sign-Off</div>
+              <div class="support-mini">RPEQ-certified verification</div>
+            </div>
+          </div>
+          <div class="support-card" data-name="Build Supervision" onclick="toggleSupport(this)">
+            <div class="support-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="support-icon">🏗️</span>
+            <div>
+              <div class="support-name">Build Supervision</div>
+              <div class="support-mini">Oversight during construction</div>
+            </div>
+          </div>
+          <div class="support-card" data-name="Rebuild / Upgrade" onclick="toggleSupport(this)">
+            <div class="support-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="support-icon">🔄</span>
+            <div>
+              <div class="support-name">Rebuild / Upgrade</div>
+              <div class="support-mini">Capacity or safety upgrade</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT FORM + DIRECT CONTACT -->
+        <div class="contact-grid">
+
+          <!-- DIRECT CONTACT -->
+          <div class="direct-contact reveal">
+            <span class="eyebrow">Direct Contact</span>
+            <h3>Talk to us.</h3>
+            <p>Project managers and procurement teams: please include indicative scope, schedule and any standards you require us to work to.</p>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-val"><a href="mailto:Maz@goeleng.com.au">Maz@goeleng.com.au</a></div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.44 2 2 0 0 1 3.55 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Phone</div>
+                <div class="contact-item-val"><a href="tel:+61421555010">0421 555 010</a></div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Location</div>
+                <div class="contact-item-val">Toowoomba, QLD</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Response Time</div>
+                <div class="contact-item-val" style="color:var(--signal);">One business day</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ENQUIRY FORM -->
+          <div class="reveal">
+            <div class="contact-form-wrap">
+              <div id="formContainer">
+                <div class="contact-form-head">
+                  <span class="eyebrow">Send a Brief</span>
+                  <h3>Tell us about the project.</h3>
+                  <p>The more you can share up-front — sector, deliverables, schedule, standards — the more useful the first response will be.</p>
+                </div>
+
+                <!-- SELECTION SUMMARY (auto-populated) -->
+                <div class="selection-summary" id="selectionSummary">
+                  <div class="selection-summary-label">Your selection</div>
+                  <div class="selection-chips" id="selectionChips"></div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="fullName">Full Name *</label>
+                    <input class="form-input" type="text" id="fullName" name="fullName" required placeholder="John Smith"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="company">Company *</label>
+                    <input class="form-input" type="text" id="company" name="company" required placeholder="Acme Engineering Pty Ltd"/>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="email">Work Email *</label>
+                    <input class="form-input" type="email" id="email" name="email" required placeholder="john@acme.com.au"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="phone">Phone (optional)</label>
+                    <input class="form-input" type="tel" id="phone" name="phone" placeholder="+61 4XX XXX XXX"/>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="industry">Industry</label>
+                    <select class="form-select" id="industry" name="industry">
+                      <option value="" disabled selected>Select sector</option>
+                      <option value="Coal & Mineral Processing">Coal &amp; Mineral Processing</option>
+                      <option value="Chemical & Manufacturing">Chemical &amp; Manufacturing</option>
+                      <option value="Waste-to-Energy">Waste-to-Energy</option>
+                      <option value="Thermal Processes">Thermal Processes</option>
+                      <option value="Wastewater Treatment">Wastewater Treatment</option>
+                      <option value="Oil & Gas">Oil &amp; Gas</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="serviceType">Project Phase</label>
+                    <select class="form-select" id="serviceType" name="serviceType">
+                      <option value="" disabled selected>Select phase</option>
+                      <option value="Concept Design">Concept Design</option>
+                      <option value="FEED Design">FEED Design</option>
+                      <option value="Detailed Design">Detailed Design</option>
+                      <option value="Commissioning">Commissioning</option>
+                      <option value="Optimisation">Optimisation</option>
+                      <option value="Not sure yet">Not sure yet</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="brief">Project Brief *</label>
+                  <textarea class="form-textarea" id="brief" name="brief" required placeholder="Describe your project — scope, deliverables, schedule, standards, anything else we should know. The more detail you can share, the more specific our response will be."></textarea>
+                </div>
+
+                <div class="form-error" id="formError"></div>
+
+                <button type="button" class="btn btn-primary btn-submit" id="submitBtn" onclick="submitEnquiry()">
+                  Submit Enquiry →
+                </button>
+
+                <p style="font-size:11px;color:var(--muted-dim);margin-top:14px;line-height:1.6;">
+                  By submitting, you agree to be contacted about this enquiry. We don't add you to any mailing list. Confidentiality on request.
+                </p>
+              </div>
+
+              <!-- SUCCESS STATE -->
+              <div class="form-success" id="formSuccess">
+                <div class="success-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3>Enquiry Received</h3>
+                <p>Thank you — we've received your brief and will respond with a clear scope and honest indicative effort within one business day.</p>
+                <p style="margin-top:12px;">Keep an eye on <span id="confirmEmail" style="color:var(--signal);"></span> for our response.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CLOSING CTA -->
+        <div class="cta-band reveal">
+          <h2>Ready to unlock the value we can deliver?</h2>
+          <p>Tell us where your project stands. We'll come back with a clear scope — no obligation.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-brand" href="/home" style="text-decoration:none;">
+            <img src="Material/Logo_White_tran.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-dark">
+            <img src="Material/Logo_White_tran_light.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-light">
+          </a>
+          <p>Process · Design · Consultancy. Based in Toowoomba, QLD — AI-powered process engineering from concept through commissioning and optimisation.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Site</h4>
+          <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="contact.html">Start a Project</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:Maz@goeleng.com.au">Maz@goeleng.com.au</a></li>
+            <li><a href="tel:+61421555010">0421 555 010</a></li>
+            <li>Toowoomba, QLD</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span class="yr">2026</span> Go Edgeless Engineering. All rights reserved.</span>
+        <span>ABN Registered · Insured · Confidentiality on request</span>
+      </div>
+      <div class="footer-credit">Website designed by <a href="https://sewari.dev" target="_blank" rel="noopener noreferrer">Sewari</a></div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+  <script>
+    // ── Formspree endpoint ──
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgobeqyr';
+
+    // ── Selection state ──
+    let selectedPhase = '';
+    const selectedSupport = new Set();
+
+    function selectPhase(el) {
+      const name = el.dataset.name;
+      document.querySelectorAll('.phase-card').forEach(c => c.classList.remove('selected'));
+      if (selectedPhase === name) {
+        selectedPhase = '';
+      } else {
+        el.classList.add('selected');
+        selectedPhase = name;
+      }
+      updateSummary();
+    }
+
+    function toggleSupport(el) {
+      const name = el.dataset.name;
+      if (selectedSupport.has(name)) {
+        selectedSupport.delete(name);
+        el.classList.remove('selected');
+      } else {
+        selectedSupport.add(name);
+        el.classList.add('selected');
+      }
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const summary = document.getElementById('selectionSummary');
+      const chips = document.getElementById('selectionChips');
+      const all = [];
+      if (selectedPhase) all.push(selectedPhase);
+      selectedSupport.forEach(s => all.push(s));
+
+      if (all.length === 0) {
+        summary.classList.remove('visible');
+        return;
+      }
+      summary.classList.add('visible');
+      chips.innerHTML = all.map(n => `<span class="chip">✓ ${n}</span>`).join('');
+    }
+
+    function showError(message) {
+      const errorBox = document.getElementById('formError');
+      errorBox.textContent = message;
+      errorBox.classList.add('visible');
+    }
+
+    function hideError() {
+      const errorBox = document.getElementById('formError');
+      errorBox.classList.remove('visible');
+    }
+
+    function submitEnquiry() {
+      const fullName = document.getElementById('fullName').value.trim();
+      const company  = document.getElementById('company').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const phone    = document.getElementById('phone').value.trim();
+      const industry = document.getElementById('industry').value;
+      const service  = document.getElementById('serviceType').value;
+      const brief    = document.getElementById('brief').value.trim();
+
+      hideError();
+
+      if (!fullName || !company || !email || !brief) {
+        showError('Please fill in all required fields (Name, Company, Email, Brief).');
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      // Build selection string
+      const allSelected = [];
+      if (selectedPhase) allSelected.push('Phase: ' + selectedPhase);
+      selectedSupport.forEach(s => allSelected.push('Support: ' + s));
+      const selectionText = allSelected.length > 0
+        ? allSelected.join('\n')
+        : 'No phase/services selected';
+
+      const payload = {
+        _subject:     'New Project Enquiry — ' + company,
+        _replyto:     email,
+        name:         fullName,
+        email:        email,
+        company:      company,
+        phone:        phone || 'Not provided',
+        industry:     industry || 'Not specified',
+        project_phase: service || 'Not specified',
+        selection:    selectionText,
+        brief:        brief,
+      };
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then((res) => {
+          if (res.ok) {
+            showSuccess(email);
+          } else {
+            return res.json().then((data) => {
+              throw new Error((data && data.errors && data.errors.map(e => e.message).join(', ')) || 'Submission failed.');
+            });
+          }
+        })
+        .catch((err) => {
+          console.error('Formspree error:', err);
+          showError('Something went wrong sending your enquiry. Please try again or email us directly at Maz@goeleng.com.au.');
+          btn.disabled = false;
+          btn.textContent = 'Submit Enquiry →';
+        });
+    }
+
+    function showSuccess(email) {
+      document.getElementById('formContainer').style.display = 'none';
+      const success = document.getElementById('formSuccess');
+      success.classList.add('show');
+      document.getElementById('confirmEmail').textContent = email;
+    }
+  </script>
+</body>
+</html>

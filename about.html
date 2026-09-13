@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <script>(function(){if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light');}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Our Story — Go Edgeless Engineering</title>
+  <meta name="description" content="Engineering built on the floor, not just the page. How Go Edgeless Engineering pairs hands-on field experience with AI-augmented process engineering."/>
+  <link rel="canonical" href="https://goedgeless.mohammedalsewari06.workers.dev/about.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Go Edgeless Engineering"/>
+  <meta property="og:title" content="Our Story — Go Edgeless Engineering"/>
+  <meta property="og:description" content="Engineering built on the floor, not just the page. How Go Edgeless Engineering pairs hands-on field experience with AI-augmented process engineering."/>
+  <meta property="og:url" content="https://goedgeless.mohammedalsewari06.workers.dev/about.html"/>
+  <meta property="og:image" content="https://goedgeless.mohammedalsewari06.workers.dev/Material/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Our Story — Go Edgeless Engineering"/>
+  <meta name="twitter:description" content="Engineering built on the floor, not just the page. How Go Edgeless Engineering pairs hands-on field experience with AI-augmented process engineering."/>
+  <meta name="twitter:image" content="https://goedgeless.mohammedalsewari06.workers.dev/Material/og-image.png"/>
+  <link rel="icon" type="image/png" href="Material/favicon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── ABOUT-SPECIFIC ── */
+
+    .about-hero-bg {
+      position:absolute; inset:0;
+      background:
+        radial-gradient(80% 60% at 70% 0%, rgba(79,170,255,0.14), transparent 60%),
+        linear-gradient(160deg, #0a2348 0%, #04132b 100%);
+    }
+
+    .profile-section {
+      display:grid; grid-template-columns:360px 1fr;
+      gap:80px; align-items:start;
+      padding:80px 0;
+    }
+    .profile-card {
+      position:sticky; top:100px;
+    }
+    .profile-meta { display:flex; flex-direction:column; gap:12px; }
+    .profile-meta-row { display:flex; flex-direction:column; gap:3px; }
+    .profile-meta-row .key {
+      font-size:10px; font-weight:800; letter-spacing:0.3em;
+      text-transform:uppercase; color:var(--signal);
+    }
+    .profile-meta-row .val {
+      font-size:13px; font-weight:600; color:var(--white);
+      display:flex; align-items:center; gap:8px;
+    }
+    .profile-meta-row .val::before {
+      content:''; flex-shrink:0;
+      width:6px; height:6px; border-radius:50%;
+      background:var(--signal);
+      box-shadow:0 0 8px var(--signal);
+    }
+
+    /* At a Glance divider — plain line only, the bullet now lives on the text line */
+    .profile-card .h-rule .dot { display:none; }
+    .profile-card .h-rule .line { flex:1; }
+
+
+    .profile-body h2 {
+      font-size:clamp(26px,3vw,42px);
+      margin-bottom:28px;
+    }
+    .profile-body h2 em { color:var(--signal); font-style:normal; }
+
+    .profile-body p {
+      font-size:14px; color:var(--muted); line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    /* STORY IMAGES */
+    .story-image {
+      width:100%; aspect-ratio:16/9;
+      background:linear-gradient(160deg, #0d2e5c 0%, #071d3d 100%);
+      border:1px solid var(--border);
+      border-radius:2px;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+      margin:32px 0;
+    }
+    .story-image::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(60% 40% at 50% 30%, rgba(79,170,255,0.12), transparent);
+    }
+    .story-image-placeholder {
+      font-size:10px; font-weight:700; letter-spacing:0.22em;
+      color:var(--muted-dim); text-transform:uppercase;
+      position:relative; z-index:1;
+    }
+    .story-image img {
+      width:100%; height:100%; object-fit:cover;
+      position:relative; z-index:1;
+    }
+    .story-image.has-caption { margin-bottom:10px; }
+    .story-image-caption {
+      font-size:11px; font-weight:700; letter-spacing:0.14em;
+      text-transform:uppercase; color:var(--muted-dim);
+      text-align:center; margin:0 0 32px;
+    }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left:2px solid var(--signal);
+      padding:8px 0 8px 28px;
+      margin:36px 0;
+    }
+    .pull-quote p {
+      font-size:clamp(18px,2.2vw,26px); font-weight:600;
+      color:var(--white); line-height:1.5;
+      font-style:italic; margin-bottom:0;
+    }
+
+    /* AT A GLANCE SIDEBAR */
+    .glance-label {
+      font-size:12px; font-weight:800; letter-spacing:0.3em;
+      text-transform:uppercase; color:var(--signal);
+      margin-bottom:20px; display:block;
+    }
+
+    @media (max-width:900px) {
+      .profile-section { grid-template-columns:1fr; gap:40px; }
+      .profile-card { position:static; }
+    }
+
+    /* ── LIGHT THEME OVERRIDES ── */
+    html[data-theme="light"] .about-hero-bg {
+      background:
+        radial-gradient(80% 60% at 70% 0%, rgba(21,101,201,0.08), transparent 60%),
+        linear-gradient(160deg, #eef3fa 0%, #ffffff 100%);
+    }
+    html[data-theme="light"] .story-image {
+      background:linear-gradient(160deg, #eef3fa 0%, #ffffff 100%);
+    }
+    html[data-theme="light"] .story-image::before {
+      background:radial-gradient(60% 40% at 50% 30%, rgba(21,101,201,0.08), transparent);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-bar">
+      <a class="nav-brand" href="/home">
+        <img src="Material/Logo_White_tran.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-dark">
+        <img src="Material/Logo_White_tran_light.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-light">
+      </a>
+      <div class="nav-bar-right">
+        <ul class="nav-links">
+          <li><a href="/home">Home</a></li>
+          <li><a href="about.html" class="active">Our Story</a></li>
+          <li><a href="contact.html">Start a Project</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light mode">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav-hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile-panel">
+      <div class="nav-mobile-panel-inner">
+        <ul class="nav-panel-links">
+          <li><a href="/home">Home</a></li>
+          <li><a href="about.html" class="active">Our Story</a></li>
+          <li><a href="contact.html">Start a Project</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="about-hero-bg"></div>
+      <div class="grid-overlay"></div>
+      <div class="container page-hero-inner">
+        <div class="breadcrumb"><a href="/home">Home</a> / Our Story</div>
+        <h1>Engineering built on the floor,<br><em>not just the page.</em></h1>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="section">
+      <div class="container">
+        <div class="profile-section">
+
+          <!-- STICKY AT A GLANCE CARD -->
+          <div class="profile-card reveal">
+            <span class="glance-label">At a Glance</span>
+            <div class="profile-meta">
+              <div class="profile-meta-row">
+                <span class="key">Industries</span>
+                <span class="val">Mining &amp; Mineral Processing, Oil &amp; Gas, Thermal &amp; Waste-to-Energy, Chemical Processing, Water &amp; Wastewater, Resource Recovery</span>
+              </div>
+              <div class="h-rule"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
+              <div class="profile-meta-row">
+                <span class="key">Services</span>
+                <span class="val">Feasibility &amp; FEED Studies, Process Design, PFD &amp; P&amp;ID Drafting, Mass &amp; Energy Balances, Equipment Sizing &amp; Selection, Process Simulation, HAZOP &amp; Safety Reviews, Detailed Design, Commissioning Support, Process Optimisation</span>
+              </div>
+              <div class="h-rule"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
+              <div class="profile-meta-row">
+                <span class="key">Credentials</span>
+                <span class="val">RPEQ | NER, Multi-Industry Experience, Concept-to-Commissioning Delivery</span>
+              </div>
+              <div class="h-rule"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
+              <div class="profile-meta-row">
+                <span class="key">Edge</span>
+                <span class="val">AI-Assisted, Engineer-Reviewed, Faster Delivery, Reduced Errors, Practical, Field-Tested Solutions</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STORY BODY -->
+          <div class="profile-body reveal">
+            <p>Go Edgeless Engineering was founded on a simple conviction: the best process design comes from engineers who have actually stood on the plant — commissioning equipment, chasing down a hunting valve, clearing a feed bridge at 2am — not just drawn it from a desk.</p>
+
+            <div class="story-image has-caption">
+              <img src="Material/1.png" alt="Coal Preparation Plant">
+            </div>
+            <p class="story-image-caption">Coal Preparation Plant</p>
+
+            <p>Our experience is built on real industrial projects — continuous pyrolysis and gasification plants, emissions control systems, hazardous waste treatment, bulk solids handling, and complex plant upgrades. We've delivered FEED studies, process design packages, control philosophies, HAZOPs, commissioning programs, and operational improvements across multiple industries.</p>
+
+            <p>Having worked directly with plant operators, maintenance teams, and commissioning crews, we understand what it takes to get systems performing reliably in the field. That hands-on experience is embedded in every design, calculation, and recommendation we deliver.</p>
+
+            <div class="story-image has-caption">
+              <img src="Material/2.gif" alt="HMI of the DriPam Friction Reducer In-Situ Production Unit">
+            </div>
+            <p class="story-image-caption">HMI of the DriPam Friction Reducer In-Situ Production Unit</p>
+
+            <div class="pull-quote">
+              <p>"We don't hand over a design we couldn't commission ourselves."</p>
+            </div>
+
+            <div class="story-image">
+              <img src="Material/3.svg" alt="">
+            </div>
+
+            <p>What sets us apart is how we pair that field experience with AI-augmented modern engineering. We use intelligent tooling to move faster through calculations, modelling, and documentation — compressing weeks of routine work into days — so our energy goes where it matters: judgement, safety, and getting the process right.</p>
+
+            <p>Our AI-assisted design workflow enhances engineering efficiency by automatically cross-checking drawings, calculations, and project documentation. Combined with experienced engineering oversight, this approach reduces errors, improves design coordination, shortens review cycles, and delivers high-quality outcomes faster and more cost-effectively.</p>
+
+            <p>The result is engineering that's rigorous but fast, independent but accountable — concept through commissioning, owned end to end.</p>
+
+            <div style="display:flex; gap:16px; margin-top:48px;">
+              <a href="contact.html" class="btn btn-primary">Start a Project →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-brand" href="/home" style="text-decoration:none;">
+            <img src="Material/Logo_White_tran.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-dark">
+            <img src="Material/Logo_White_tran_light.svg" alt="Go Edgeless Engineering" class="nav-logo nav-logo-light">
+          </a>
+          <p>Process · Design · Consultancy. Based in Toowoomba, QLD — AI-powered process engineering from concept through commissioning and optimisation.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Site</h4>
+          <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="contact.html">Start a Project</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:Maz@goeleng.com.au">Maz@goeleng.com.au</a></li>
+            <li><a href="tel:+61421555010">0421 555 010</a></li>
+            <li>Toowoomba, QLD</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span class="yr">2026</span> Go Edgeless Engineering. All rights reserved.</span>
+        <span>ABN Registered · Insured · Confidentiality on request</span>
+      </div>
+      <div class="footer-credit">Website designed by <a href="https://sewari.dev" target="_blank" rel="noopener noreferrer">Sewari</a></div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>
