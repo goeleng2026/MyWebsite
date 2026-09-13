@@ -435,7 +435,7 @@ html[data-theme="light"] .site-footer {
   min-width:0;
 }
 
-/* ── STAT CHIP ── */
+/* ── STAT CHIP ��─ */
 .stat-chip {
   display:flex; flex-direction:column;
   border:1px solid var(--border);
@@ -535,7 +535,6 @@ html[data-theme="light"] .form-textarea {
 @media (max-width:900px) {
   .site-nav { width:calc(100% - 24px); }
   .nav-bar { padding:0 16px; }
-  .nav-logo { height:45px; }
   .container { padding:0 24px; }
   .footer-grid { grid-template-columns:1fr 1fr; gap:32px; }
   .nav-links { display:none; }
@@ -547,7 +546,6 @@ html[data-theme="light"] .form-textarea {
   .stat-chip .num { font-size:28px; }
 }
 @media (max-width:600px) {
-  .nav-logo { height:40px; max-width:120px; }
   .footer-grid { grid-template-columns:1fr; }
   .section { padding:64px 0; }
   .approach-banner { padding:20px; gap:24px; }
